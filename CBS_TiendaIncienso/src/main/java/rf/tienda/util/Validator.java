@@ -1,6 +1,8 @@
 package rf.tienda.util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 /********************************************************************************************
  * NOMBRE: Validator.java
@@ -26,8 +28,7 @@ public class Validator {
 	/**
 	 * Permite verificar que un DNI cumple con el patr�n XX.XXX.XXX-L
 	 */
-	private final static String DNI_PATTERN = "\\d{2}\\.\\d{3}\\.\\d{3}-[a-zA-Z]";
-
+	private final static String DNI_PATTERN = "^\\d{2}[.]\\d{3}[.]\\d{3}-[A-Z]$";
 	/**
 	 * Permite validar un tel�fono, el cual debe contener de 10 a 20 d�gitos y donde
 	 * los espacios est�n permitidos
@@ -43,6 +44,7 @@ public class Validator {
 	 * Longitud que debe tener todo DNI pasado a la aplicaci�n.
 	 */
 	private final static int LONGITUD_DNI = 12;
+	private static final String FORMATO_FECHA = "yyyy-MM-dd";
 
 	/*
 	 * *****************************************************************************
@@ -68,7 +70,7 @@ public class Validator {
 	}
 
 	public static boolean isVacio(String prueba) {
-		if (prueba == null)
+		if (prueba.equals(""))
 			return true;
 		else
 			return false;
@@ -93,10 +95,10 @@ public class Validator {
 		 * 
 		 **************************************************************************************/
 	public static boolean cumplePhoneNumber(String phoneNumber) {
-		if (phoneNumber.matches(ALFANUMERIC_PATTERN))
+		if (phoneNumber.length() >= 10 && phoneNumber.length() <= 20) {
 			return true;
-		else
-			return false;
+		}
+		return false;
 	}
 
 	/*
@@ -153,23 +155,23 @@ public class Validator {
 	/**
 	 * Comprueba que un N�mero se necuentra entre 2 valores
 	 * 
-	 * @param valor       (int)/(double) N�mero a comprobar
-	 * @param valorMinimo (int) N�mero valor aceptable
-	 * @param valorMaximo (int) M�N�mero valor aceptable
+	 * @param vALOR_DOUBLE        (int)/(double) N�mero a comprobar
+	 * @param vALOR_MAXIMO_DOUBLE (int) N�mero valor aceptable
+	 * @param vALOR_MINIMO_DOUBLE (int) M�N�mero valor aceptable
 	 * 
 	 * @return true si valorMinimo > valor > valorMaximo FECHA: Enero 2023 AUTOR:
 	 *         Miguel Garcia
 	 * 
 	 **************************************************************************************/
-	public static boolean cumpleRango(int valor, int valorMinimo, int valorMaximo) {
-		if (valor >= valorMaximo && valor <= valorMinimo)
+	public static boolean cumpleRango(double vALOR_DOUBLE, double vALOR_MAXIMO_DOUBLE, double vALOR_MINIMO_DOUBLE) {
+		if (vALOR_DOUBLE > vALOR_MINIMO_DOUBLE && vALOR_DOUBLE < vALOR_MAXIMO_DOUBLE)
 			return true;
 		else
 			return false;
 	}
 
 	public static boolean cumpleRango(double valor, int valorMinimo, int valorMaximo) {
-		if (valor >= valorMaximo && valor <= valorMinimo)
+		if (valor > valorMaximo && valor < valorMinimo)
 			return true;
 		else
 			return false;
@@ -258,7 +260,7 @@ public class Validator {
 	 */
 
 	public static boolean valDateMin(LocalDate fecha, LocalDate min) {
-		if (fecha.compareTo(min)<=0)
+		if (fecha.compareTo(min) > 0)
 			return true;
 		else
 			return false;
@@ -273,8 +275,8 @@ public class Validator {
 	 * @return
 	 */
 	public static boolean valDateMax(LocalDate fecha, LocalDate max) {
-		
-		if (fecha.compareTo(max)>0)
+
+		if (fecha.compareTo(max) < 0)
 			return true;
 		else
 			return false;
@@ -289,14 +291,20 @@ public class Validator {
 	 * @return
 	 */
 	public static boolean esFechaValida(String fecha) {
-		int dia = Integer.parseInt(fecha.substring(0, 2));
-		int mes = Integer.parseInt(fecha.substring(3, 5));
-		int anio= Integer.parseInt(fecha.substring(6, 10));
-		//terminar
-		if (dia>= 1 && dia<=31 && mes>=1 && mes<=12 && anio<=2023 && anio>=1900)
-		return true;
-		else 
+
+		try {
+
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
+
+			LocalDate.parse(fecha, formatter);
+
+			return true;
+
+		} catch (DateTimeParseException e) {
+
 			return false;
+
+		}
 
 	}
 
@@ -308,9 +316,10 @@ public class Validator {
 	 * @return true si cumple con las especificaciones
 	 */
 	public static boolean esPasswordValida(String password) {
-		//
-
-		return true;
+		if (password.matches(PASSWORD_PATTERN))
+			return true;
+		else
+			return false;
 
 	}
 }

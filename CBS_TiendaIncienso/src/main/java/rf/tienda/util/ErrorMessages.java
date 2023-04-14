@@ -1,6 +1,5 @@
 package rf.tienda.util;
 
-
 /* *****************************************************
  * NOMBRE: ErrorMessages.java
  * 
@@ -14,20 +13,16 @@ package rf.tienda.util;
  *  
  *  *****************************************************/
 public class ErrorMessages {
-	
-	
-		
+
 	/**
 	 * Codigo de producto
 	 */
 	public final static String PROERR_001 = "Formato codigo erroneo";
 	public final static String PROERR_002 = "Longitud de codigo erroneo";
-	
+
 	/**
 	 * Campo con longitud erronea
 	 */
 	public final static String PROERR_003 = "La longitud de ? ha de estar entre ? y ?";
-	
-	
 
 }
