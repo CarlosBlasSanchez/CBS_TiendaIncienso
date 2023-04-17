@@ -1,0 +1,88 @@
+-------------------------------------------------------------------------------
+Test set: rf.tienda.util.test.ValidatorTest
+-------------------------------------------------------------------------------
+Tests run: 14, Failures: 0, Errors: 14, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! - in rf.tienda.util.test.ValidatorTest
+testCumpleLongitud  Time elapsed: 0.02 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleLongitud(ValidatorTest.java:150)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleLongitud(ValidatorTest.java:150)
+
+testCumplePhoneNumber  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testCumplePhoneNumber(ValidatorTest.java:90)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testCumplePhoneNumber(ValidatorTest.java:90)
+
+testCumpleRangoDouble  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleRangoDouble(ValidatorTest.java:128)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleRangoDouble(ValidatorTest.java:128)
+
+testcumpleLongitudMax  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testcumpleLongitudMax(ValidatorTest.java:144)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testcumpleLongitudMax(ValidatorTest.java:144)
+
+testcumpleLongitudMin  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testcumpleLongitudMin(ValidatorTest.java:138)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testcumpleLongitudMin(ValidatorTest.java:138)
+
+testFechaValida  Time elapsed: 0.006 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testFechaValida(ValidatorTest.java:173)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testFechaValida(ValidatorTest.java:173)
+
+testEsPasswordValida  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testEsPasswordValida(ValidatorTest.java:184)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testEsPasswordValida(ValidatorTest.java:184)
+
+testCumpleRangoInt  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleRangoInt(ValidatorTest.java:117)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleRangoInt(ValidatorTest.java:117)
+
+testValDateMax  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testValDateMax(ValidatorTest.java:165)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testValDateMax(ValidatorTest.java:165)
+
+testValDateMin  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testValDateMin(ValidatorTest.java:157)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testValDateMin(ValidatorTest.java:157)
+
+testCumpleDNI  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleDNI(ValidatorTest.java:107)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testCumpleDNI(ValidatorTest.java:107)
+
+testEmailValido  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testEmailValido(ValidatorTest.java:97)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testEmailValido(ValidatorTest.java:97)
+
+testAlfanumericos  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testAlfanumericos(ValidatorTest.java:76)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testAlfanumericos(ValidatorTest.java:76)
+
+testIsVacio  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at rf.tienda.util.test.ValidatorTest.testIsVacio(ValidatorTest.java:83)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at rf.tienda.util.test.ValidatorTest.testIsVacio(ValidatorTest.java:83)
+

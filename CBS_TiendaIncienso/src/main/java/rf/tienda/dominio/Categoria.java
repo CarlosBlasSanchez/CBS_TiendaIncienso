@@ -1,29 +1,43 @@
 package rf.tienda.dominio;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import rf.tienda.exception.DomainException;
 import rf.tienda.util.Validator;
 
 /**
  * 
  * Nombre Categoria Descripcion Lista de categorías
  * 
- * @author Miguel Garcia
- * @version 13 de abr. de 2023
+ * @author Carlos Blas Sánchez
+ * @version 17 de abr. de 2023
  *
  */
-public class Categoria {
 
+@Entity
+@Table(name="Categoria", schema = "CBS_ALUMNO")
+public class Categoria{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_categoria; // identificador categoria
-
+	@Column(nullable = false)
 	private String cat_nombre; // nombre de la categoria
-
 	private String cat_descripcion; // descripcion de la categoria
 
 	public Categoria() {
 	}
 
-	public boolean isValid() {
-		return !Validator.isVacio(cat_nombre) && id_categoria > 0;
-	}
+//	public boolean isValid() {
+//		return !Validator.isVacio(cat_nombre) && id_categoria > 0;
+//	}
 
 	/**
 	 * Getter para identificador de categoria
@@ -39,7 +53,8 @@ public class Categoria {
 	 * 
 	 */
 	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
+		if (id_categoria>0)
+			this.id_categoria = id_categoria;
 	}
 
 	/**
@@ -53,10 +68,14 @@ public class Categoria {
 
 	/**
 	 * Setter para el nombre de categoria
+	 * @throws DomainException 
 	 * 
 	 */
-	public void setCat_nombre(String cat_nombre) {
-		this.cat_nombre = cat_nombre;
+	public void setCat_nombre(String cat_nombre) throws DomainException {
+		if (Validator.cumpleLongitud(cat_nombre, 5, 50))
+			this.cat_nombre = cat_nombre;
+		else 
+			new DomainException("No cumple con el formato establecido");
 	}
 
 	/**
@@ -73,7 +92,10 @@ public class Categoria {
 	 * 
 	 */
 	public void setCat_descripcion(String cat_descripcion) {
-		this.cat_descripcion = cat_descripcion;
+		if (Validator.cumpleLongitudMax(cat_descripcion, 200))
+			this.cat_descripcion = cat_descripcion;
+		else 
+			new DomainException("Has superado la longitud maxima");
 	}
 
 	@Override
