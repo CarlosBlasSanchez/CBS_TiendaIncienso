@@ -26,7 +26,7 @@ import rf.tienda.util.Validator;
 public class Categoria{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private int id_categoria; // identificador categoria
 	@Column(nullable = false)
 	private String cat_nombre; // nombre de la categoria
@@ -35,9 +35,9 @@ public class Categoria{
 	public Categoria() {
 	}
 
-//	public boolean isValid() {
-//		return !Validator.isVacio(cat_nombre) && id_categoria > 0;
-//	}
+	public boolean isValid() {
+		return !Validator.isVacio(cat_nombre) && id_categoria > 0;
+	}
 
 	/**
 	 * Getter para identificador de categoria
@@ -68,14 +68,13 @@ public class Categoria{
 
 	/**
 	 * Setter para el nombre de categoria
-	 * @throws DomainException 
+	 * 
 	 * 
 	 */
-	public void setCat_nombre(String cat_nombre) throws DomainException {
+	public void setCat_nombre(String cat_nombre) {
 		if (Validator.cumpleLongitud(cat_nombre, 5, 50))
 			this.cat_nombre = cat_nombre;
-		else 
-			new DomainException("No cumple con el formato establecido");
+		
 	}
 
 	/**
@@ -94,8 +93,7 @@ public class Categoria{
 	public void setCat_descripcion(String cat_descripcion) {
 		if (Validator.cumpleLongitudMax(cat_descripcion, 200))
 			this.cat_descripcion = cat_descripcion;
-		else 
-			new DomainException("Has superado la longitud maxima");
+		
 	}
 
 	@Override
