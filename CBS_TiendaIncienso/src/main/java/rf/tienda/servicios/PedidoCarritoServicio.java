@@ -30,21 +30,32 @@ public class PedidoCarritoServicio implements IPedidoCarritoServicio {
 			int id_pedidoCarrito) {
 		PedidoCarrito aux = pedidoCarritoRepo.findById(id_pedidoCarrito).get();
 		if (Objects.nonNull(pedidoCarrito.getCodigo_producto_cliente()) && !"".equalsIgnoreCase(pedidoCarrito.getCodigo_producto_cliente())) {
-			aux.setCodigo_producto_cliente(aux.getCodigo_producto_cliente());
+			aux.setCodigo_producto_cliente(pedidoCarrito.getCodigo_producto_cliente());
 		}
 		if (Objects.nonNull(pedidoCarrito.getCantidad_producto())) {
-			aux.setCantidad_producto(aux.getCantidad_producto());
+			aux.setCantidad_producto(pedidoCarrito.getCantidad_producto());
 		}
 		if (Objects.nonNull(pedidoCarrito.getPrecio_linea_de_pedido())) {
-			aux.setPrecio_linea_de_pedido(aux.getPrecio_linea_de_pedido());
+			aux.setPrecio_linea_de_pedido(pedidoCarrito.getPrecio_linea_de_pedido());
 		}
 		if (Objects.nonNull(pedidoCarrito.getNumero_tarjeta_credito()) && !"".equalsIgnoreCase(pedidoCarrito.getNumero_tarjeta_credito())) {
-			aux.setNumero_tarjeta_credito(aux.getNumero_tarjeta_credito());
+			aux.setNumero_tarjeta_credito(pedidoCarrito.getNumero_tarjeta_credito());
 		}
 		if (Objects.nonNull(pedidoCarrito.getFecha_caducidad_tarjeta())) {
-			aux.setFecha_caducidad_tarjeta(aux.getFecha_caducidad_tarjeta());
+			aux.setFecha_caducidad_tarjeta(pedidoCarrito.getFecha_caducidad_tarjeta());
 		}
-		
+		if (Objects.nonNull(pedidoCarrito.getCcv_tarjeta_credito())) {
+			aux.setCcv_tarjeta_credito(pedidoCarrito.getCcv_tarjeta_credito());
+		}
+		if (Objects.nonNull(pedidoCarrito.getNombre_titular_tarjeta()) && !"".equalsIgnoreCase(pedidoCarrito.getNombre_titular_tarjeta())) {
+			aux.setNombre_titular_tarjeta(pedidoCarrito.getNombre_titular_tarjeta());
+		}
+		if (Objects.nonNull(pedidoCarrito.getEstado_carrito())) {
+			aux.setEstado_carrito(pedidoCarrito.getEstado_carrito());
+		}
+		if (Objects.nonNull(pedidoCarrito.getFechas_cambio())) {
+			aux.setFechas_cambio(pedidoCarrito.getFechas_cambio());
+		}
 		return pedidoCarritoRepo.save(aux);
 	}
 

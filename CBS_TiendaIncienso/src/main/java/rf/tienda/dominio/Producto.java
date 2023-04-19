@@ -16,7 +16,6 @@ import rf.tienda.util.Validator;
 public class Producto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name = "Id_producto", nullable = false)
 	private String id_producto;
 
