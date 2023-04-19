@@ -50,11 +50,14 @@ public class Categoria{
 
 	/**
 	 * Setter para identificador de categoria
+	 * @throws DomainException 
 	 * 
 	 */
-	public void setId_categoria(int id_categoria) {
+	public void setId_categoria(int id_categoria) throws DomainException {
 		if (id_categoria>0)
 			this.id_categoria = id_categoria;
+		else 
+			throw new DomainException("Error");
 	}
 
 	/**
@@ -68,13 +71,15 @@ public class Categoria{
 
 	/**
 	 * Setter para el nombre de categoria
+	 * @throws DomainException 
 	 * 
 	 * 
 	 */
-	public void setCat_nombre(String cat_nombre) {
+	public void setCat_nombre(String cat_nombre) throws DomainException {
 		if (Validator.cumpleLongitud(cat_nombre, 5, 50))
 			this.cat_nombre = cat_nombre;
-		
+		else 
+			throw new DomainException("Error");
 	}
 
 	/**
@@ -88,11 +93,14 @@ public class Categoria{
 
 	/**
 	 * setter para la descripcion de categoria
+	 * @throws DomainException 
 	 * 
 	 */
-	public void setCat_descripcion(String cat_descripcion) {
+	public void setCat_descripcion(String cat_descripcion) throws DomainException {
 		if (Validator.cumpleLongitudMax(cat_descripcion, 200))
 			this.cat_descripcion = cat_descripcion;
+		else 
+			throw new DomainException("Error");
 		
 	}
 

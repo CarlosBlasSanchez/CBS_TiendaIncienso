@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import rf.tienda.dominio.Categoria;
+import rf.tienda.exception.DomainException;
 import rf.tienda.servicios.ICategoriaServicio;
 
 @RestController
@@ -26,13 +27,13 @@ public class CategoriaController {
 	}
 	
 	@PostMapping
-		public Categoria crearCategoria(@RequestBody Categoria categoria) {
+		public Categoria crearCategoria(@RequestBody Categoria categoria) throws DomainException {
 			categoria.setId_categoria(0);
 			return categoriaServicio.crear(categoria);
 	}
 	
 	@PutMapping
-	public Categoria actualizarCategoria(@RequestBody Categoria categoria) {
+	public Categoria actualizarCategoria(@RequestBody Categoria categoria) throws DomainException {
 		return categoriaServicio.actualizarCategoria(categoria, categoria.getId_categoria());
 		
 	}

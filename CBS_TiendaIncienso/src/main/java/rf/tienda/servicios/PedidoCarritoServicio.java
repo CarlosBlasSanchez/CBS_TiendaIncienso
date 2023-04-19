@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import rf.tienda.dominio.Categoria;
 import rf.tienda.dominio.PedidoCarrito;
+import rf.tienda.exception.DomainException;
 import rf.tienda.repository.PedidoCarritoRepository;
 import rf.tienda.servicios.IPedidoCarritoServicio;
 @Service
@@ -27,7 +28,7 @@ public class PedidoCarritoServicio implements IPedidoCarritoServicio {
 
 	@Override
 	public PedidoCarrito actualizarPedidoCarrito(PedidoCarrito pedidoCarrito,
-			int id_pedidoCarrito) {
+			int id_pedidoCarrito) throws DomainException {
 		PedidoCarrito aux = pedidoCarritoRepo.findById(id_pedidoCarrito).get();
 		if (Objects.nonNull(pedidoCarrito.getCodigo_producto_cliente()) && !"".equalsIgnoreCase(pedidoCarrito.getCodigo_producto_cliente())) {
 			aux.setCodigo_producto_cliente(pedidoCarrito.getCodigo_producto_cliente());
@@ -38,8 +39,13 @@ public class PedidoCarritoServicio implements IPedidoCarritoServicio {
 		if (Objects.nonNull(pedidoCarrito.getPrecio_linea_de_pedido())) {
 			aux.setPrecio_linea_de_pedido(pedidoCarrito.getPrecio_linea_de_pedido());
 		}
-		if (Objects.nonNull(pedidoCarrito.getNumero_tarjeta_credito()) && !"".equalsIgnoreCase(pedidoCarrito.getNumero_tarjeta_credito())) {
-			aux.setNumero_tarjeta_credito(pedidoCarrito.getNumero_tarjeta_credito());
+		try {
+			if (Objects.nonNull(pedidoCarrito.getNumero_tarjeta_credito()) && !"".equalsIgnoreCase(pedidoCarrito.getNumero_tarjeta_credito())) {
+				aux.setNumero_tarjeta_credito(pedidoCarrito.getNumero_tarjeta_credito());
+			}
+		} catch (DomainException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		if (Objects.nonNull(pedidoCarrito.getFecha_caducidad_tarjeta())) {
 			aux.setFecha_caducidad_tarjeta(pedidoCarrito.getFecha_caducidad_tarjeta());

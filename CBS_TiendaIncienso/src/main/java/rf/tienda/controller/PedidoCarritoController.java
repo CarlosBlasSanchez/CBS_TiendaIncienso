@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import rf.tienda.dominio.PedidoCarrito;
+import rf.tienda.exception.DomainException;
 import rf.tienda.servicios.IPedidoCarritoServicio;
 
 
@@ -34,7 +35,7 @@ public class PedidoCarritoController {
 	}
 	
 	@PutMapping
-	public PedidoCarrito actualizarPedidoCarrito(@RequestBody PedidoCarrito pedidoCarrito) {
+	public PedidoCarrito actualizarPedidoCarrito(@RequestBody PedidoCarrito pedidoCarrito) throws DomainException {
 		return pedidoCarritoServicio.actualizarPedidoCarrito(pedidoCarrito, pedidoCarrito.getId_pedido());
 		
 	}

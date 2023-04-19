@@ -26,7 +26,7 @@ public class CategoriaServicio implements ICategoriaServicio {
 	}
 
 	@Override
-	public Categoria actualizarCategoria(Categoria categoria, int id_categoria) {
+	public Categoria actualizarCategoria(Categoria categoria, int id_categoria) throws DomainException {
 		Categoria aux = categoriaRepo.findById(id_categoria).get();
 		if (Objects.nonNull(categoria.getCat_nombre()) && !"".equalsIgnoreCase(categoria.getCat_nombre())) {
 			aux.setCat_nombre(categoria.getCat_nombre());
